@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            place-items: center;
+            background: url('./Design sem nome.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        #container {
+            width: 900px;
+            height: 500px;
+            box-shadow: 0px 0px 5px white;
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-radius: 10px;
+        }
+        
+        .tempo {
+            width: 200px;
+            height: 250px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.308);
+            color: #2b2a2a;
+            display: grid;
+            place-items: center;
+            font-size: 50px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+        @media (max-width:576px) {
+   #container{
+    width: 300px;
+    height: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+   padding-bottom: 5px;
+}
+
+.tempo p{
+   font-size: 16px;
+   text-align: center;
+   position: absolute;
+   top: 100px;
+   }
+
+}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="blur-layer"></div>
+        <div id="horas" class="tempo"></div>
+        <div id="minutos" class="tempo"></div>
+        <div id="segundos" class="tempo"></div>
+    </div>
+    <script>
+        const horas = document.getElementById("horas");
+        const minutos = document.getElementById("minutos");
+        const segundos = document.getElementById("segundos");
+
+        function horario() {
+            const data = new Date();
+            horas.innerHTML = data.getHours().toString().padStart(2, '0') + '<p>Horas</p>';
+            minutos.innerHTML = data.getMinutes().toString().padStart(2, '0') + '<p>Minutos</p>';
+            segundos.innerHTML = data.getSeconds().toString().padStart(2, '0')+ '<p>Segundos</p>';
+        }
+
+        setInterval(horario, 1000);
+        horario(); // Chama a função imediatamente para inicializar os valores
+    </script>
+</body>
+</html>
